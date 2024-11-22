@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Área - Playlists</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Suas Playlists</h2>
+
+        <h3>Criar Nova Playlist</h3>
+        <form id="playlistForm">
+            <label for="playlistName">Nome da Playlist:</label>
+            <input type="text" id="playlistName" required>
+            
+            <label for="songs">Selecione Músicas:</label>
+            <select id="songs" multiple>
+                <option value="song1">Música 1</option>
+                <option value="song2">Música 2</option>
+                <option value="song3">Música 3</option>
+            </select>
+            <button type="button" onclick="savePlaylist()">Salvar Playlist</button>
+        </form>
+
+        <h3>Playlists Criadas</h3>
+        <ul id="playlistsList"></ul>
+    </div>
+
+    <script>
+        function savePlaylist() {
+            const playlistName = document.getElementById('playlistName').value;
+            const selectedSongs = Array.from(document.getElementById('songs').selectedOptions)
+                .map(option => option.value);
+            
+            let playlists = JSON.parse(localStorage.getItem('userPlaylists')) || [];
+            playlists.push({ name: playlistName, songs: selectedSongs });
+            localStorage.setItem('userPlaylists', JSON.stringify(playlists));
+
+            alert('Playlist salva com sucesso!');
+            displayPlaylists();
+        }
+
+        function displayPlaylists() {
+            const playlistsList = document.getElementById('playlistsList');
+            playlistsList.innerHTML = ''; 
+            const playlists = JSON.parse(localStorage.getItem('userPlaylists')) || [];
+
+            playlists.forEach((playlist, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${playlist.name}</strong>: ${playlist.songs.join(', ')}`;
+                playlistsList.appendChild(li);
+            });
+        }
+
+        window.onload = displayPlaylists;
+    </script>
+</body>
+</html>

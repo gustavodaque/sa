@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reprodução de Músicas</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Músicas Cadastradas</h2>
+        <ul id="songsList">
+            <li>Música 1 <button onclick="playSong('url_da_musica_1.mp3')">Reproduzir</button></li>
+            <li>Música 2 <button onclick="playSong('url_da_musica_2.mp3')">Reproduzir</button></li>
+            <li>Música 3 <button onclick="playSong('url_da_musica_3.mp3')">Reproduzir</button></li>
+        </ul>
+    </div>
+
+    <script>
+        function playSong(url) {
+            const audio = document.createElement('audio');
+            audio.src = url;
+            audio.controls = true; // Adiciona os controles de reprodução
+            document.body.appendChild(audio); // Insere o áudio na página
+            audio.play();
+
+            audio.onended = () => document.body.removeChild(audio);
+        }
+    </script>
+</body>
+</html>

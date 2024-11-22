@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibetrack - Home</title>
+    <link rel="stylesheet" href="2.css">
+</head>
+<body>
+    <!-- Navegação Lateral -->
+    <aside class="sidebar">
+        <img src="ddd.JPG" alt="Vibetrack Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="minha_area.html">Minha Área</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <header class="topbar">
+            <h2>Músicas e Playlists</h2>
+            <input type="text" placeholder="Buscar músicas ou artistas..." class="search-bar">
+        </header>
+        
+        <section class="featured">
+            <h3>Destaques</h3>
+            <div class="playlist-grid">
+                <!-- Cartões de Playlist -->
+                <div class="playlist-card">Playlist 1</div>
+                <div class="playlist-card">Playlist 2</div>
+                <div class="playlist-card">Playlist 3</div>
+                <div class="playlist-card">Playlist 4</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Barra de Controle de Reprodução -->
+    <footer class="player-bar">
+        <button onclick="previousSong()">⏮️</button>
+        <button onclick="togglePlay()">⏯️</button>
+        <button onclick="nextSong()">⏭️</button>
+        <span class="song-title">Música em Reprodução</span>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

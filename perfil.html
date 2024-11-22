@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="style2.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .profile-container {
+            background-color: #202020;
+            padding: 40px;
+            border-radius: 12px;
+            width: 300px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h2>Perfil do Usuário</h2>
+        <p><strong>Nome:</strong> <span id="userName"></span></p>
+        <p><strong>Email:</strong> <span id="userEmail"></span></p>
+    </div>
+    <script>
+        window.onload = function() {
+            const username = localStorage.getItem('username');
+            const email = localStorage.getItem('email'); // Você deve garantir que o email seja salvo no cadastro
+
+            if (username && email) {
+                document.getElementById('userName').textContent = username;
+                document.getElementById('userEmail').textContent = email;
+            } else {
+                alert("Usuário não logado.");
+                window.location.href = 'login.html'; // Redireciona para login
+            }
+        }
+    </script>
+</body>
+</html>
